@@ -1,0 +1,7 @@
+.navbar-collapse{
+    justify-content: flex-end;
+}
+
+.navbar-nav{
+    margin-right: 0 !important;
+}

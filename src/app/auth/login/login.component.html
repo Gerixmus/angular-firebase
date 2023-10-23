@@ -1,0 +1,22 @@
+<div class="login-form">
+    <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and password</div>
+        <h1 class="login-title">Log in</h1>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" ngModel required email #email="ngModel">
+          <span class="error-message" *ngIf="email.touched && email.invalid && email.errors?.['required']">Enter your email address.</span>
+          <span class="error-message" *ngIf="email.touched && email.invalid && email.errors?.['email']">Enter correct email address.</span>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" ngModel required password minlength="6" #password="ngModel">
+          <span class="error-message" *ngIf="password.touched && password.invalid && password.errors?.['required']">Enter your password.</span>
+          <span class="error-message" *ngIf="password.touched && password.invalid && password.errors?.['minlength']">Enter correct password.</span>
+        </div>
+        <button type="submit" class="btn" [disabled]="!f.valid">Submit</button>  
+      </form>
+</div>
+<div class="register-container">
+    <p>No account? <a (click)="redirectRegister()" style="cursor: pointer; color: #0077B5;">Register here</a></p>
+</div>
