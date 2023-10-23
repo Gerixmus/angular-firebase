@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col" *ngIf="isAdmin()">ID</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of booksData" class="book">
+            <!-- TO-DO finish admmin check -->
+            <td *ngIf="isAdmin()">{{ book.id }}</td> 
+            <td>{{ book.genre }}</td>
+            <td>{{ book.author }}</td>
+        </tr>
+      </tbody>
+</table>
