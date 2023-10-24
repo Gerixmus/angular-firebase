@@ -28,5 +28,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## To do list 📋
 
-- [ ] Add custom validator (possibly regex).
+- [ ] Add custom synchronous validator.
+- [x] Add custom asynchronous validator.
 - [ ] Rewrite login to reactive form.
+- [ ] Create on canDeactivate guard.
+
+## Issues
+
+- Importing firestore only works from '@angular/fire/firestore'.
+- rxfire issues with versions above '6.0.3'.

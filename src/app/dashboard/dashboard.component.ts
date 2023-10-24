@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection } from 'firebase/firestore';
+import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,17 +10,20 @@ export class DashboardComponent implements OnInit{
 
   booksData: any[] = [];
 
-constructor(private firestore : Firestore) {}
+constructor(private backendService : BackendService) {}
 
 isAdmin() {
   return true;
 }
 
-ngOnInit() {
-  const aCollection = collection(this.firestore, 'books');
-  collectionData(aCollection, {idField: 'id'}).subscribe(val => {
+getBooks(): void {
+  this.backendService.getBooksData().subscribe((val) => {
     console.log(val);
     this.booksData = val;
-  })
+  });
+}
+
+ngOnInit() {
+  this.getBooks();
 }
 }

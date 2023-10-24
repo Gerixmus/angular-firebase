@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, User, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 
 @Injectable({
@@ -19,16 +19,14 @@ export class AuthService {
 
   // UID stored in userCredential
   // register(email: string, password: string): Promise<User> {
-  register(email: string, password: string): Promise<string> {
+  register(email: string, password: string): Promise<UserCredential> {
     return createUserWithEmailAndPassword(this.auth, email, password)
-      .catch(err => {
-        console.log(err);
+      .catch(err => { //not working
+        console.log(err); 
         return err;
       })
       .then((userCredential) => {
-        return 'success';
-        // const user = userCredential.user;
-        // return user;
+        return userCredential;
       })
   }
 
