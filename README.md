@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## To do list 📋
 
-- [ ] Add custom synchronous validator.
+- [x] Add custom synchronous validator.
 - [x] Add custom asynchronous validator.
 - [ ] Rewrite login to reactive form.
 - [ ] Create on canDeactivate guard.

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { BackendService } from 'src/app/backend.service';
 
 @Component({
@@ -46,18 +46,22 @@ export class RegisterComponent implements OnInit{
     return emailTakenPromise;
   }
 
-  // TO-DO not working
-  // emailTaken (control: FormControl): Observable<ValidationErrors | null> {
-  //   return this.backendService.emailTaken(control.value).pipe(
-  //     map(isTaken => (isTaken ? { uniqueEmail: true } : null)),
-  //     catchError(() => of(null))
-  //   )
-  // }
+  // More specific email validation
+  invalidEmail(control: FormControl): {[s:string]: boolean} | null {
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!control.value) {
+      return null;
+    }
+    if (!emailRegex.test(control.value)) {
+      return {'invalidEmail' : true};
+    }
+    return null;
+  }
 
   ngOnInit(): void {
    this.form = this.formBuilder.group({
     'email' : [null, {
-      validators : [Validators.required, Validators.email],
+      validators : [Validators.required, Validators.email, this.invalidEmail.bind(this)],
       asyncValidators : [this.emailTaken.bind(this)],
       updateOn: 'blur'
     }],

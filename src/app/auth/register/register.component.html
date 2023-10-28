@@ -5,8 +5,8 @@
           <label for="email" class="form-label">Email address</label>
           <input type="email" class="form-control" id="email" name="email" formControlName="email">
           <span class="error-message" *ngIf="email.touched && email.invalid && email.errors?.['required']">Enter your email address.</span>
-          <span class="error-message" *ngIf="email.touched && email.invalid && email.errors?.['email']">Enter correct email address.</span>
-          <span class="error-message" *ngIf="form.get('email')?.hasError('emailTaken')">Email already taken.</span>
+          <span class="error-message" *ngIf="email.touched && email.invalid && (email.errors?.['email'] || email.errors?.['invalidEmail'])">Enter correct email address.</span>
+          <span class="error-message" *ngIf="email.touched && email.invalid && email.errors?.['emailTaken']">Email already taken.</span>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password (minimum 6 characters)</label>
