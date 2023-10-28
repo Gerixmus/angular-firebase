@@ -12,10 +12,6 @@ export class DashboardComponent implements OnInit{
 
 constructor(private backendService : BackendService) {}
 
-isAdmin() {
-  return true;
-}
-
 getBooks(): void {
   this.backendService.getBooksData().subscribe((val) => {
     console.log(val);

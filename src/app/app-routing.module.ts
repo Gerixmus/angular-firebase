@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './auth/auth.guard';
 import { loggedGuard } from './auth/logged.guard';
+import { adminGuard } from './auth/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },

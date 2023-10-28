@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
 import { UserCredential } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { DocumentReference, doc, setDoc } from 'firebase/firestore';
+import { docData } from 'rxfire/firestore';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
@@ -26,6 +27,13 @@ export class BackendService {
     );
     return collectionData(emailQuery, { idField: 'id' }).pipe(
       map((results) => results.length > 0)
+    );
+  }
+
+  // TO-DO create type admin
+  getAdmin(uid: string | null) {
+    return docData<any>(
+      doc(this.db, '/administrators/' + uid) as DocumentReference<any>
     );
   }
 

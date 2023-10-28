@@ -30,8 +30,20 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - [x] Add custom synchronous validator.
 - [x] Add custom asynchronous validator.
+- [ ] Fold mobile menu on select.
 - [ ] Rewrite login to reactive form.
+- [x] Create 2 canActivate guards.
 - [ ] Create on canDeactivate guard.
+- [ ] Create feature module that is loaded using lazy loading.
+- [ ] Create child route.
+- [ ] Catch incorrectly entered routes.
+- [ ] Create custom made directive.
+- [ ] Create pipe to filer or sort.
+- [ ] Create subject.
+- [ ] Create admin access level.
+- [ ] Create local storage token for admin.
+- [ ] Make unit testing plan for one component.
+- [ ] Deploy application on firebase.
 
 ## Issues
 
