@@ -37,8 +37,8 @@ export class BackendService {
     );
   }
 
-  getBooksData(): Observable<any[]> {
-    const booksCollection = collection(this.db, 'books');
-    return collectionData(booksCollection, { idField: 'id' });
+  getRestaurantsData(): Observable<any[]> {
+    const restaurantsCollection = collection(this.db, 'restaurants');
+    return collectionData(restaurantsCollection, { idField: 'id' });
   }
 }

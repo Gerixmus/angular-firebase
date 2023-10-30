@@ -30,6 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - [x] Add custom synchronous validator.
 - [x] Add custom asynchronous validator.
+- [ ] Improve restaurants section display.
 - [ ] Fold mobile menu on select.
 - [ ] Rewrite login to reactive form.
 - [x] Create 2 canActivate guards.

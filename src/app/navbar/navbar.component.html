@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="">Navbar</a>
+      <a class="navbar-brand" href="">RESTAURANTS</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,7 +13,7 @@
             <a class="nav-link" aria-current="page" routerLink="register" *ngIf="!isLoggedIn()">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="dashboard" *ngIf="isLoggedIn()">Dashboard</a>
+            <a class="nav-link" aria-current="page" routerLink="restaurants" *ngIf="isLoggedIn()">Restaurants</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="cursor: pointer;" (click)="logout()" *ngIf="isLoggedIn()">Logout</a>

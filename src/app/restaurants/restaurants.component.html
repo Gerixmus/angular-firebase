@@ -1,0 +1,13 @@
+<div class="restaurants">
+    <div class="restaurants-container">
+      <div class="restaurant" *ngFor="let restaurant of restaurantsData">
+        <div class="restaurant-info">
+          <div class="image-wrapper">
+            <img src="/assets/{{ restaurant.image}}" class="restaurant-image">
+          </div>
+          <p class="name">{{ restaurant.name }}</p>
+          <p class="city">{{ restaurant.city }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
