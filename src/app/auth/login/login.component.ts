@@ -29,7 +29,7 @@ export class LoginComponent{
           this.invalidLogin = true;
         } else {
           this.invalidLogin = false;
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['restaurants']);
         }
       });
   }
