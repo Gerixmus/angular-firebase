@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BackendService } from '../backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CanDeactivateType } from '../deactivate.guard';
-import { Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 
 @Component({
   selector: 'app-review',
@@ -47,29 +47,19 @@ export class ReviewComponent implements OnInit{
      });
   }
 
-  canDeactivate(): CanDeactivateType {
+  // TO-DO create visually appealing dialog
+  canDeactivate(): Observable<boolean> {
     if (this.form.value.rate || this.form.value.review) {
-      const deactivateSubject = new Subject<boolean>();
-      console.log(this.form.value.rate);
-      console.log(this.form.value.review);
-      // deactivateSubject.next(true);
-      // deactivateSubject.next(false);
-      
-      // this._confirmation.confirm({
-      //   message: 'Are you sure you want to leave? Some data may be lost.',
-      //   icon: '',
-      //   accept: () => {
-      //     deactivateSubject.next(true);
-      //   },
-      //   reject: () => {
-      //     deactivateSubject.next(false);
-      //   },
-      // });
-      return deactivateSubject;
+      return new Observable((observer) => {
+        const userConfirmed = confirm('You have unsaved changes. Do you want to discard them?');
+        observer.next(userConfirmed);
+        observer.complete();
+      });
     } else {
-      return true;
+      return of(true);
     }
   }
+  
 
   onSubmit(): void {
     const rate = this.form.value.rate;
