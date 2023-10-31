@@ -12,6 +12,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
     RegisterComponent,
     NavbarComponent,
     RestaurantsComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

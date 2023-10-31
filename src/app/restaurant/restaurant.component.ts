@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BackendService } from '../backend.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class RestaurantComponent implements OnInit{
   filteredRestaurant: any | undefined;
   filteredReviews: any[] = [];
 
-  constructor(private route: ActivatedRoute, private backendService : BackendService) {
+  constructor(private route: ActivatedRoute, private backendService : BackendService, private  router : Router) {
     this.name = this.route.snapshot.queryParamMap.get('name');
   }
 
@@ -30,6 +30,10 @@ export class RestaurantComponent implements OnInit{
       console.log(val);
       this.filteredReviews = val;
     });
+  }
+
+  reviewRedirect(name: string | null): void{
+    this.router.navigate(['review'], {queryParams: { name: name}});
   }
 
   ngOnInit(): void {

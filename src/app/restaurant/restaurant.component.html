@@ -27,7 +27,7 @@
                         <p class="review-info">Reviews</p>
                         <p class="review-info number" *ngIf="filteredReviews">{{ "(" + filteredReviews.length + ")" }}</p>
                     </div>
-                    <div class="review-button">
+                    <div (click)="reviewRedirect(this.name)" class="review-button">
                         <p class="review-button-info">Write a review</p>
                     </div>
                 </div>

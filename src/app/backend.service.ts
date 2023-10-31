@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
 import { UserCredential } from 'firebase/auth';
-import { CollectionReference, DocumentReference, doc, setDoc } from 'firebase/firestore';
+import { CollectionReference, DocumentReference, addDoc, doc, setDoc } from 'firebase/firestore';
 import { docData } from 'rxfire/firestore';
-import { Observable, map } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +52,13 @@ export class BackendService {
     const reviewsCollection = query(collection(this.db, 'reviews'),
     where("restaurant", "==", id));
     return collectionData(reviewsCollection, { idField: 'id' });
+  }
+
+  createReview(rate: number, restaurant: string, review: string) {
+    return from(addDoc(collection(this.db, 'reviews'), {
+      rate: rate,
+      restaurant: restaurant,
+      review: review
+    }));
   }
 }

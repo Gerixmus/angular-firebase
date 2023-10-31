@@ -30,11 +30,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - [x] Add custom synchronous validator.
 - [x] Add custom asynchronous validator.
+- [ ] Replace bootstrap with custom CSS.
 - [ ] Improve restaurants section display.
 - [ ] Fold mobile menu on select.
 - [ ] Rewrite login to reactive form.
 - [x] Create 2 canActivate guards.
 - [ ] Give feedback on login attempts.
+- [ ] Give feedback on review attempts.
 - [ ] Create on canDeactivate guard.
 - [ ] Create feature module that is loaded using lazy loading.
 - [ ] Create child route.

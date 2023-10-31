@@ -1,0 +1,26 @@
+<div class="register-form">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1 class="register-title">Write a review</h1>
+        <div class="restaurant-container">
+            <div class="restaurant" *ngIf="filteredRestaurant">
+                <div class="restaurant-info">
+                  <div class="image-wrapper">
+                    <img src="/assets/{{ filteredRestaurant.image}}" class="restaurant-image">
+                  </div>
+                  <p class="name">{{ filteredRestaurant.name }}</p>
+                  <p class="city">{{ filteredRestaurant.city }}</p>
+                </div>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="rate" class="form-label">Rate (1-5)</label>
+            <input type="number" class="form-control" id="rate" name="rate" formControlName="rate" min="1" max="5">
+            <span class="error-message" *ngIf="rate.touched && rate.invalid">Enter correct number.</span>
+          </div>
+        <div class="mb-3">
+          <label for="review" class="form-label">Write your review</label>
+          <textarea type="review" class="form-control" id="review" name="review" formControlName="review" style="height: 100px"></textarea>
+        </div>
+        <button type="submit" class="btn" [disabled]="!form.valid">Submit</button>  
+      </form>
+</div>
