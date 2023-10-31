@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
 import { UserCredential } from 'firebase/auth';
-import { DocumentReference, doc, setDoc } from 'firebase/firestore';
+import { CollectionReference, DocumentReference, doc, setDoc } from 'firebase/firestore';
 import { docData } from 'rxfire/firestore';
 import { Observable, map } from 'rxjs';
 
@@ -40,5 +40,17 @@ export class BackendService {
   getRestaurantsData(): Observable<any[]> {
     const restaurantsCollection = collection(this.db, 'restaurants');
     return collectionData(restaurantsCollection, { idField: 'id' });
+  }
+
+  getRestaurantData(name: string | null): Observable<any[]> {
+    const restaurantCollection = query(collection(this.db, 'restaurants'),
+    where("name", "==", name));
+    return collectionData(restaurantCollection, { idField: 'id' });
+  }
+
+  getReviewsData(id: string | null): Observable<any[]> {
+    const reviewsCollection = query(collection(this.db, 'reviews'),
+    where("restaurant", "==", id));
+    return collectionData(reviewsCollection, { idField: 'id' });
   }
 }

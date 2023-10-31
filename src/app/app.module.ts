@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment'
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    RestaurantsComponent
+    RestaurantsComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,

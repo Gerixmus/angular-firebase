@@ -1,0 +1,43 @@
+<div class="restaurant-container">
+    <div class="restaurant" *ngIf="filteredRestaurant">
+        <div class="title-container">
+            <div class="restaurant-title">
+                <p class="name">{{ filteredRestaurant.name }}</p>
+                <p class="address">{{  filteredRestaurant.address + ", " + filteredRestaurant.city }}</p>
+            </div>
+        </div>
+        <div class="restaurant-info">
+            <div class="image-wrapper">
+                <img src="/assets/{{ filteredRestaurant.image}}" class="restaurant-image">
+            </div>
+            <div class="info-colums">
+                <div class="info-colum">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet enim eget lacus pulvinar placerat sagittis ac leo. Nunc mattis urna sit amet ultricies.</p>
+                </div>
+                <div class="info-colum">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet enim eget lacus pulvinar placerat sagittis ac leo. Nunc mattis urna sit amet ultricies.</p>
+                </div>
+                <div class="info-colum">
+                    <p>Placeholder for map</p>
+                </div>
+            </div>
+            <div class="reviews">
+                <div class="reviews-header">
+                    <div class="reviews-number">
+                        <p class="review-info">Reviews</p>
+                        <p class="review-info number" *ngIf="filteredReviews">{{ "(" + filteredReviews.length + ")" }}</p>
+                    </div>
+                    <div class="review-button">
+                        <p class="review-button-info">Write a review</p>
+                    </div>
+                </div>
+                <div *ngFor="let review of filteredReviews" class="review">
+                    <div class="rate">
+                        <img *ngFor="let i of [].constructor(review.rate); let index = index" src="/assets/star.png" class="rating-icon">
+                    </div>
+                    <p>{{ review.review }}</p>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>

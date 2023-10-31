@@ -6,12 +6,14 @@ import { authGuard } from './auth/auth.guard';
 import { loggedGuard } from './auth/logged.guard';
 import { adminGuard } from './auth/admin.guard';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   {path:'login', component : LoginComponent, canActivate : [loggedGuard]},
   {path:'register', component : RegisterComponent, canActivate : [loggedGuard]},
-  {path:'restaurants', component : RestaurantsComponent, canActivate : [authGuard]}
+  {path:'restaurants', component : RestaurantsComponent, canActivate : [authGuard]},
+  {path:'restaurant', component : RestaurantComponent, canActivate : [authGuard]}
 ];
 
 @NgModule({
