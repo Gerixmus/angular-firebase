@@ -4,6 +4,7 @@ import { BackendService } from '../backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CanDeactivateType } from '../deactivate.guard';
 import { Observable, Subject, of } from 'rxjs';
+import { DialogService } from '../dialog.service';
 
 @Component({
   selector: 'app-review',
@@ -15,7 +16,7 @@ export class ReviewComponent implements OnInit{
   name: string | null;
   filteredRestaurant: any | undefined;
 
-  constructor(private formBuilder : FormBuilder, private backendService : BackendService, private route: ActivatedRoute, private router : Router) {
+  constructor(private dialogService: DialogService, private formBuilder : FormBuilder, private backendService : BackendService, private route: ActivatedRoute, private router : Router) {
     this.name = this.route.snapshot.queryParamMap.get('name');
   }
 
@@ -48,18 +49,20 @@ export class ReviewComponent implements OnInit{
   }
 
   // TO-DO create visually appealing dialog
-  canDeactivate(): Observable<boolean> {
+  async canDeactivate(): Promise<boolean> {
     if (this.form.value.rate || this.form.value.review) {
-      return new Observable((observer) => {
-        const userConfirmed = confirm('You have unsaved changes. Do you want to discard them?');
-        observer.next(userConfirmed);
-        observer.complete();
-      });
+      const result = await this.dialogService.openDialog();
+      if (result) {
+        console.log('User confirmed.');
+        return true;
+      } else {
+        console.log('User canceled.');
+        return false;
+      }
     } else {
-      return of(true);
+      return true;
     }
   }
-  
 
   onSubmit(): void {
     const rate = this.form.value.rate;

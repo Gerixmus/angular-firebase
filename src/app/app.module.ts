@@ -13,6 +13,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { ReviewComponent } from './review/review.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { DialogService } from './dialog.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ReviewComponent } from './review/review.component';
     NavbarComponent,
     RestaurantsComponent,
     RestaurantComponent,
-    ReviewComponent
+    ReviewComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { ReviewComponent } from './review/review.component';
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())
   ],
-  providers: [],
+  providers: [DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
