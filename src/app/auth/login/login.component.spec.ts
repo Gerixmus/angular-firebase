@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginComponent } from './login.component';
+import { AuthService } from '../auth.service';
+import { FormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -8,7 +9,11 @@ describe('LoginComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      declarations: [LoginComponent],
+      imports: [FormsModule],
+      providers: [
+        {provide: AuthService, useValue: AuthService}
+      ],
     });
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
@@ -18,4 +23,8 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should render title', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('h1.login-title').textContent).toContain('Log in');
+  })
 });

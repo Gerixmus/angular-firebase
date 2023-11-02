@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
+import { Auth } from '@angular/fire/auth';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,7 +9,10 @@ describe('NavbarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavbarComponent]
+      declarations: [NavbarComponent],
+      providers: [
+        {provide: Auth, useValue: Auth},
+      ]
     });
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;

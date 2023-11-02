@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RestaurantsComponent } from './restaurants.component';
+import { Firestore } from '@angular/fire/firestore';
 
 describe('RestaurantsComponent', () => {
   let component: RestaurantsComponent;
@@ -8,7 +9,10 @@ describe('RestaurantsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RestaurantsComponent]
+      declarations: [RestaurantsComponent],
+      providers: [
+        {provide: Firestore, useValue: Firestore}
+      ]
     });
     fixture = TestBed.createComponent(RestaurantsComponent);
     component = fixture.componentInstance;
