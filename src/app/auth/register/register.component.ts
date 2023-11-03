@@ -11,12 +11,13 @@ import { BackendService } from 'src/app/backend.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit{
+  registerError: boolean = false;
   form! : FormGroup;
 
   constructor(private router: Router, private authService: AuthService, private formBuilder : FormBuilder, private backendService : BackendService) { }
   
   redirectLogin() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['login'])
   }
 
   get email() {
@@ -81,19 +82,8 @@ export class RegisterComponent implements OnInit{
         this.backendService.updateUser(user);
         this.router.navigate(['login']);
       } else {
-        // this.backendService.emailTaken(email)
-        // .pipe(map((isTaken: boolean) => {
-        //   if (isTaken) {
-        //     console.log('taken')
-        //   } else {
-        //     console.log('not taken')
-        //   }
-        // }),
-        // catchError((error) => {
-        //       console.error('Error:', error);
-        //       return error;
-        //     })).subscribe();
         console.log("error");
+        this.registerError = true;
       }
     })
   }

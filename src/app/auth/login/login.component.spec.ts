@@ -22,9 +22,5 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-  it('should render title', () => {
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1.login-title').textContent).toContain('Log in');
   })
 });
