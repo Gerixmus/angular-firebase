@@ -12,6 +12,7 @@ import { DialogService } from '../dialog.service';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit{
+  submitted: boolean = false;
   form! : FormGroup;
   name: string | null;
   filteredRestaurant: any | undefined;
@@ -50,6 +51,9 @@ export class ReviewComponent implements OnInit{
 
   // TO-DO create visually appealing dialog
   async canDeactivate(): Promise<boolean> {
+    if (this.submitted) {
+      return true;
+    }
     if (this.form.value.rate || this.form.value.review) {
       const result = await this.dialogService.openDialog();
       if (result) {
@@ -71,7 +75,8 @@ export class ReviewComponent implements OnInit{
     this.backendService.createReview(rate, restaurant, review)
       .subscribe(
         ((book) => {
-          console.log(book)
+          console.log(book);
+          this.submitted = true;
           this.router.navigate(['restaurant'], {queryParams: { name: this.name}});
         })
       )

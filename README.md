@@ -34,7 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Add custom asynchronous validator.
 - [x] Create 2 canActivate guards.
 - [x] Create on canDeactivate guard.
-- [ ] Create feature module that is loaded using lazy loading.
+- [x] Create feature module that is loaded using lazy loading.
 - [ ] Create child route.
 - [ ] Catch incorrectly entered routes.
 - [ ] Create custom made directive.
