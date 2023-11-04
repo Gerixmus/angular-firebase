@@ -28,16 +28,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## To do list 📋
 
+# Important
+
 - [x] Add custom synchronous validator.
 - [x] Add custom asynchronous validator.
-- [ ] Replace bootstrap with custom CSS.
-- [ ] Improve restaurants section display.
-- [ ] Fold mobile menu on select.
-- [ ] Rewrite login to reactive form.
-- [ ] Create dialog for unsaved form.
 - [x] Create 2 canActivate guards.
-- [ ] Give feedback on login attempts.
-- [ ] Give feedback on review attempts.
 - [x] Create on canDeactivate guard.
 - [ ] Create feature module that is loaded using lazy loading.
 - [ ] Create child route.
@@ -49,6 +44,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [ ] Create local storage token for admin.
 - [x] Make unit testing plan for one component.
 - [ ] Deploy application on firebase.
+  
+# Optional
+
+- [ ] Replace bootstrap with custom CSS.
+- [ ] Improve restaurants section display.
+- [ ] Fold mobile menu on select.
+- [ ] Rewrite login to reactive form.
+- [x] Create dialog for unsaved form.
+- [ ] Give feedback on login attempts.
+- [ ] Give feedback on review attempts.
 
 ## Issues
 
