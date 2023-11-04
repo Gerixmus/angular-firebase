@@ -37,12 +37,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Create feature module that is loaded using lazy loading.
 - [ ] Create child route.
 - [ ] Catch incorrectly entered routes.
-- [ ] Create custom made directive.
+- [x] Create custom made directive.
 - [x] Create pipe to filer or sort.
-- [ ] Create subject.
+- [x] Create subject.
 - [ ] Create admin access level.
 - [x] Make unit testing plan for one component.
-- [ ] Deploy application on firebase.
+- [x] Deploy application on firebase.
   
 ### Optional
 
