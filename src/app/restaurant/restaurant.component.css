@@ -5,6 +5,20 @@
     min-height: calc(100vh - 56px);
 }
 
+.review-search{
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.search-button{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 .title-container{
     background-color: white;
     width: 100%;
@@ -162,6 +176,6 @@
         border-radius: 0;
     }
     .review-button-info{
-        margin: 10px 15px 10px 15px;
+        margin: 10px;
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackendService } from '../backend.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant',
@@ -12,6 +12,7 @@ export class RestaurantComponent implements OnInit, OnDestroy{
   private restaurantSubscription!: Subscription;
   private reviewsSubscription!: Subscription;
   name: string | null;
+  searchValue: string = '';
   filteredRestaurant: any | undefined;
   filteredReviews: any[] = [];
 
@@ -24,15 +25,27 @@ export class RestaurantComponent implements OnInit, OnDestroy{
     console.log(val);
     this.filteredRestaurant = val[0];
     console.log(this.filteredRestaurant.id);
-    this.getReviews(this.filteredRestaurant.id)
+    this.getReviews(this.filteredRestaurant.id, this.searchValue)
     });
   }
 
-  getReviews(id: string): void {
-    this.reviewsSubscription = this.backendService.getReviewsData(id).subscribe((val) => {
-    console.log(val);
-    this.filteredReviews = val;
-    });
+  reviewSearch() {
+    this.getReviews(this.filteredRestaurant.id, this.searchValue)
+  }
+
+  getReviews(id: string, searchValue: string): void {
+    this.reviewsSubscription = this.backendService.getReviewsData(id).pipe(
+      map((review) => {
+        if(searchValue) {
+          return review.filter(element => element.review.includes(searchValue));
+        } else {
+          return review
+        }
+      })
+    ).subscribe((review) => {
+      console.log(review);
+      this.filteredReviews = review;
+    })
   }
 
   reviewRedirect(name: string | null): void{

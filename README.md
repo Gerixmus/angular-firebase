@@ -38,7 +38,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [ ] Create child route.
 - [ ] Catch incorrectly entered routes.
 - [ ] Create custom made directive.
-- [ ] Create pipe to filer or sort.
+- [x] Create pipe to filer or sort.
 - [ ] Create subject.
 - [ ] Create admin access level.
 - [x] Make unit testing plan for one component.

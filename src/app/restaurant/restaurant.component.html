@@ -31,6 +31,12 @@
                         <p class="review-button-info">Write a review</p>
                     </div>
                 </div>
+                <div class="review-search">
+                    <input class="form-control" type="text" [(ngModel)]="searchValue" placeholder="Search reviews" (keyup.enter)="reviewSearch()">
+                    <div class="search-button" (click)="reviewSearch()">
+                        <img src="/assets/search.png" class="rating-icon">
+                    </div>
+                </div>
                 <div *ngFor="let review of filteredReviews" class="review">
                     <div class="rate">
                         <img *ngFor="let i of [].constructor(review.rate); let index = index" src="/assets/star.png" class="rating-icon">
