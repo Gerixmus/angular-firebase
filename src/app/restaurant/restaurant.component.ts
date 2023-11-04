@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackendService } from '../backend.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant',
   templateUrl: './restaurant.component.html',
   styleUrls: ['./restaurant.component.css']
 })
-export class RestaurantComponent implements OnInit{
+export class RestaurantComponent implements OnInit, OnDestroy{
+  private restaurantSubscription!: Subscription;
+  private reviewsSubscription!: Subscription;
   name: string | null;
   filteredRestaurant: any | undefined;
   filteredReviews: any[] = [];
@@ -17,18 +20,18 @@ export class RestaurantComponent implements OnInit{
   }
 
   getRestaurant(): void {
-    this.backendService.getRestaurantData(this.name).subscribe((val) => {
-      console.log(val);
-      this.filteredRestaurant = val[0];
-      console.log(this.filteredRestaurant.id);
-      this.getReviews(this.filteredRestaurant.id)
+    this.restaurantSubscription = this.backendService.getRestaurantData(this.name).subscribe((val) => {
+    console.log(val);
+    this.filteredRestaurant = val[0];
+    console.log(this.filteredRestaurant.id);
+    this.getReviews(this.filteredRestaurant.id)
     });
   }
 
   getReviews(id: string): void {
-    this.backendService.getReviewsData(id).subscribe((val) => {
-      console.log(val);
-      this.filteredReviews = val;
+    this.reviewsSubscription = this.backendService.getReviewsData(id).subscribe((val) => {
+    console.log(val);
+    this.filteredReviews = val;
     });
   }
 
@@ -38,5 +41,14 @@ export class RestaurantComponent implements OnInit{
 
   ngOnInit(): void {
     this.getRestaurant();
+  }
+
+  ngOnDestroy(): void {
+    if (this.restaurantSubscription) {
+      this.restaurantSubscription.unsubscribe();
+    }
+    if (this.reviewsSubscription) {
+      this.reviewsSubscription.unsubscribe();
+    }
   }
 }

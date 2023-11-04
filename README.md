@@ -41,12 +41,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [ ] Create pipe to filer or sort.
 - [ ] Create subject.
 - [ ] Create admin access level.
-- [ ] Create local storage token for admin.
 - [x] Make unit testing plan for one component.
 - [ ] Deploy application on firebase.
   
 ### Optional
 
+- [ ] Create local storage token for admin.
 - [ ] Replace bootstrap with custom CSS.
 - [ ] Improve restaurants section display.
 - [ ] Fold mobile menu on select.

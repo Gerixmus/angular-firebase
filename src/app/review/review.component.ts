@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BackendService } from '../backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CanDeactivateType } from '../deactivate.guard';
-import { Observable, Subject, of } from 'rxjs';
+import { Observable, Subject, Subscription, of } from 'rxjs';
 import { DialogService } from '../dialog.service';
 
 @Component({
@@ -11,7 +11,8 @@ import { DialogService } from '../dialog.service';
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
-export class ReviewComponent implements OnInit{
+export class ReviewComponent implements OnInit, OnDestroy{
+  private restaurantsSubscription!: Subscription
   submitted: boolean = false;
   form! : FormGroup;
   name: string | null;
@@ -30,7 +31,7 @@ export class ReviewComponent implements OnInit{
   }
 
   getRestaurant(): void {
-    this.backendService.getRestaurantData(this.name).subscribe((val) => {
+      this.restaurantsSubscription = this.backendService.getRestaurantData(this.name).subscribe((val) => {
       console.log(val);
       this.filteredRestaurant = val[0];
       console.log(this.filteredRestaurant.id);
@@ -49,7 +50,6 @@ export class ReviewComponent implements OnInit{
      });
   }
 
-  // TO-DO create visually appealing dialog
   async canDeactivate(): Promise<boolean> {
     if (this.submitted) {
       return true;
@@ -80,5 +80,11 @@ export class ReviewComponent implements OnInit{
           this.router.navigate(['restaurant'], {queryParams: { name: this.name}});
         })
       )
+  }
+
+  ngOnDestroy(): void {
+    if (this.restaurantsSubscription) {
+      this.restaurantsSubscription.unsubscribe();
+    }
   }
 }
