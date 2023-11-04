@@ -1,6 +1,7 @@
 # AngularFirebase
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+[View the website here!](https://angular-firebase-57acc.web.app/?_gl=1*1t3hx8q*_ga*MTIyODQ4MTg0Mi4xNjk3MTI2Mjg4*_ga_CW55HF8NVT*MTY5OTEwODI0NC40NS4xLjE2OTkxMDg2NzIuNTUuMC4w)
 
 ## Development server
 
