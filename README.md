@@ -36,7 +36,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Create on canDeactivate guard.
 - [x] Create feature module that is loaded using lazy loading.
 - [ ] Create child route.
-- [ ] Catch incorrectly entered routes.
+- [x] Catch incorrectly entered routes.
 - [x] Create custom made directive.
 - [x] Create pipe to filer or sort.
 - [x] Create subject.

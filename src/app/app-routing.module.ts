@@ -5,6 +5,7 @@ import { ReviewComponent } from './review/review.component';
 import { authGuard } from './auth/auth.guard';
 import { deactivateGuard } from './deactivate.guard';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
     canActivate : [authGuard]
   },
   {path:'restaurant', component : RestaurantComponent, canActivate : [authGuard]},
-  {path:'review', component : ReviewComponent, canActivate : [authGuard], canDeactivate : [deactivateGuard]}
+  {path:'review', component : ReviewComponent, canActivate : [authGuard], canDeactivate : [deactivateGuard]},
 ];
 
 @NgModule({
