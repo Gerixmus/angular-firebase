@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## To do list 📋
 
-# Important
+### Important
 
 - [x] Add custom synchronous validator.
 - [x] Add custom asynchronous validator.
@@ -45,7 +45,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Make unit testing plan for one component.
 - [ ] Deploy application on firebase.
   
-# Optional
+### Optional
 
 - [ ] Replace bootstrap with custom CSS.
 - [ ] Improve restaurants section display.
