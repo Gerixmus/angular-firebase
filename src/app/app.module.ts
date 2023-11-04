@@ -11,14 +11,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogService } from './dialog.service';
 import { AuthModule } from './auth/auth.module';
+import { RouterModule } from '@angular/router';
+import { EditComponent } from './edit/edit.component';
+import { AdminRestaurantsComponent } from './admin-restaurants/admin-restaurants.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DialogComponent
+    DialogComponent,
+    EditComponent,
+    AdminRestaurantsComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

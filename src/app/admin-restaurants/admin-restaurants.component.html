@@ -1,0 +1,16 @@
+<table class="table table-striped">
+<thead>
+    <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Restaurant</th>
+    <th scope="col">City</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let restaurant of restaurantsData">
+    <th scope="row">{{ restaurant.id }}</th>
+    <td>{{ restaurant.name }}</td>
+    <td>{{ restaurant.city }}</td>
+    </tr>
+</tbody>
+</table>

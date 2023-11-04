@@ -13,6 +13,9 @@
             <a class="nav-link" aria-current="page" routerLink="register" *ngIf="!isLoggedIn()">Register</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="edit" *ngIf="isLoggedIn()">Admin</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" aria-current="page" routerLink="restaurants" *ngIf="isLoggedIn()">Restaurants</a>
           </li>
           <li class="nav-item">

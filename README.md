@@ -35,12 +35,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [x] Create 2 canActivate guards.
 - [x] Create on canDeactivate guard.
 - [x] Create feature module that is loaded using lazy loading.
-- [ ] Create child route.
+- [x] Create child route.
 - [x] Catch incorrectly entered routes.
 - [x] Create custom made directive.
 - [x] Create pipe to filer or sort.
 - [x] Create subject.
-- [ ] Create admin access level.
+- [x] Create admin access level.
 - [x] Make unit testing plan for one component.
 - [x] Deploy application on firebase.
   
