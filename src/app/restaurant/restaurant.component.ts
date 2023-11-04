@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackendService } from '../backend.service';
-import { Subscription, map } from 'rxjs';
+import { Subject, Subscription, map } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant',
@@ -15,6 +15,7 @@ export class RestaurantComponent implements OnInit, OnDestroy{
   searchValue: string = '';
   filteredRestaurant: any | undefined;
   filteredReviews: any[] = [];
+  private searchValueSubject = new Subject<string>();
 
   constructor(private route: ActivatedRoute, private backendService : BackendService, private  router : Router) {
     this.name = this.route.snapshot.queryParamMap.get('name');
@@ -25,13 +26,16 @@ export class RestaurantComponent implements OnInit, OnDestroy{
     this.filteredRestaurant = val[0];
     this.getReviews(this.filteredRestaurant.id, this.searchValue)
     });
+    this.searchValueSubject.subscribe((searchValue) => {
+      this.getReviews(this.filteredRestaurant.id, searchValue);
+    });
   }
 
   reviewSearch() {
     if (this.reviewsSubscription) {
       this.reviewsSubscription.unsubscribe();
     }
-    this.getReviews(this.filteredRestaurant.id, this.searchValue);
+    this.searchValueSubject.next(this.searchValue);
   }
 
   getReviews(id: string, searchValue: string): void {
@@ -40,7 +44,7 @@ export class RestaurantComponent implements OnInit, OnDestroy{
         if(searchValue) {
           return review.filter(element => element.review.includes(searchValue));
         } else {
-          return review
+          return review;
         }
       })
     ).subscribe((review) => {
