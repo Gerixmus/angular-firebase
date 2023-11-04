@@ -1,7 +1,7 @@
 <div class="restaurants">
     <div class="restaurants-container">
       <div class="restaurant" *ngFor="let restaurant of restaurantsData">
-        <div class="restaurant-info" (click)="viewRestaurant(restaurant.name)">
+        <div class="restaurant-info" appHighlight (click)="viewRestaurant(restaurant.name)">
           <div class="image-wrapper">
             <img src="/assets/{{ restaurant.image}}" class="restaurant-image">
           </div>
