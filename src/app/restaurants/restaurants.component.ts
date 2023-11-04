@@ -20,7 +20,6 @@ export class RestaurantsComponent implements OnInit, OnDestroy{
   
   getRestaurants(): void {
     this.restaurantsSubscription = this.backendService.getRestaurantsData().subscribe((val) => {
-      console.log(val);
       this.restaurantsData = val;
     });
   }

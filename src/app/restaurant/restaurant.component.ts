@@ -22,15 +22,16 @@ export class RestaurantComponent implements OnInit, OnDestroy{
 
   getRestaurant(): void {
     this.restaurantSubscription = this.backendService.getRestaurantData(this.name).subscribe((val) => {
-    console.log(val);
     this.filteredRestaurant = val[0];
-    console.log(this.filteredRestaurant.id);
     this.getReviews(this.filteredRestaurant.id, this.searchValue)
     });
   }
 
   reviewSearch() {
-    this.getReviews(this.filteredRestaurant.id, this.searchValue)
+    if (this.reviewsSubscription) {
+      this.reviewsSubscription.unsubscribe();
+    }
+    this.getReviews(this.filteredRestaurant.id, this.searchValue);
   }
 
   getReviews(id: string, searchValue: string): void {
@@ -43,7 +44,6 @@ export class RestaurantComponent implements OnInit, OnDestroy{
         }
       })
     ).subscribe((review) => {
-      console.log(review);
       this.filteredReviews = review;
     })
   }

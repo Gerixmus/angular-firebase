@@ -32,9 +32,7 @@ export class ReviewComponent implements OnInit, OnDestroy{
 
   getRestaurant(): void {
       this.restaurantsSubscription = this.backendService.getRestaurantData(this.name).subscribe((val) => {
-      console.log(val);
       this.filteredRestaurant = val[0];
-      console.log(this.filteredRestaurant.id);
     });
   }
 
@@ -57,10 +55,8 @@ export class ReviewComponent implements OnInit, OnDestroy{
     if (this.form.value.rate || this.form.value.review) {
       const result = await this.dialogService.openDialog();
       if (result) {
-        console.log('User confirmed.');
         return true;
       } else {
-        console.log('User canceled.');
         return false;
       }
     } else {
@@ -74,8 +70,7 @@ export class ReviewComponent implements OnInit, OnDestroy{
     const restaurant = this.filteredRestaurant.id;
     this.backendService.createReview(rate, restaurant, review)
       .subscribe(
-        ((book) => {
-          console.log(book);
+        (() => {
           this.submitted = true;
           this.router.navigate(['restaurant'], {queryParams: { name: this.name}});
         })
